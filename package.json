@@ -1,0 +1,24 @@
+{
+  "name": "dat-api-client",
+  "description": "",
+  "version": "0.0.0",
+  "repository": {
+    "url": "git://github.com/sethvincent/dat-api-client.git"
+  },
+  "main": "index.js",
+  "browser": {
+    "request": "xhr"
+  },
+  "scripts": {
+    "test": "",
+    "start": ""
+  },
+  "dependencies": {
+    "btoa": "^1.1.2",
+    "request": "^2.49.0",
+    "xhr": "^1.17.0"
+  },
+  "devDependencies": {
+    "tape": "^3.0.3"
+  }
+}
