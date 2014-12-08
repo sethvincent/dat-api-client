@@ -4,7 +4,7 @@ A wrapper for the dat rest API.
 
 ## Install
 
-'''
+```
 npm i --save dat-api-client
 ```
 
