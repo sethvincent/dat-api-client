@@ -10,8 +10,7 @@
     "request": "xhr"
   },
   "scripts": {
-    "test": "",
-    "start": ""
+    "test": "node test.js"
   },
   "dependencies": {
     "btoa": "^1.1.2",
