@@ -1,6 +1,6 @@
 {
   "name": "dat-api-client",
-  "description": "",
+  "description": "A wrapper for the dat rest API.",
   "version": "0.0.0",
   "repository": {
     "url": "git://github.com/sethvincent/dat-api-client.git"
