@@ -9,14 +9,14 @@ var dat = DatAPI({
 
 test('get dat repo info', function (t) {
   dat.info(function (err, res, body) {
-    t.ok(body, 'dat repo info response ok')
+    t.ok(body, 'dat repo info response')
     t.end()
   })
 })
 
 test('post rows', function (t) {
   dat.postRows({ wee: 'foo' }, function (err, res, body) {
-    t.ok(body, 'post response body ok')
+    t.ok(body, 'post response body')
     t.equals(body.wee, 'foo')
     t.end()
   })
@@ -41,9 +41,10 @@ test('get row', function (t) {
 
 test('post bulk csv data', function (t) {
   var csv = 'wee,woo\n1,a\n2,b\n3,c'
-  
+
   dat.bulk(csv.toString(), { type: 'csv' }, function (err, res, body) {
-    t.ok(body, 'bulk response ok')
+    console.log(body)
+    t.ok(body, 'bulk response body')
     t.end()
   })
 })

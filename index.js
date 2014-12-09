@@ -49,7 +49,8 @@ DatAPI.prototype.csv = function (opts, cb) {
 
 DatAPI.prototype.bulk = function (data, opts, cb) {
   opts.timeout = 0
-  return this._req('bulk', 'POST', data, opts, cb)
+  opts.body = data
+  return this._req('bulk', 'POST', null, opts, cb)
 }
 
 DatAPI.prototype.session = function (opts, cb) {
@@ -89,14 +90,14 @@ DatAPI.prototype._req = function (resource, method, data, opts, cb) {
 
   opts.uri = this.remote + '/api/' + resource + '?' + qs.stringify(query)
   opts.method = method
-  opts.json = true
   opts.headers = {}
-
+  
   if (opts.type) {
     if (opts.type == 'csv') opts.headers['content-type'] = 'text/csv'
     if (opts.type == 'json') opts.headers['content-type'] = 'application/json'
   }
-
+  else opts.json = true
+  
   if (data) opts.json = data
   if (this.auth) opts.headers.authorization = this.auth
 
