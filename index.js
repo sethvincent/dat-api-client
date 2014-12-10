@@ -26,7 +26,7 @@ DatAPI.prototype.get = function (key, cb) {
 
 DatAPI.prototype.put = function (data, opts, cb) {
   if (opts == 'function') {
-    opts = {type: 'json'}
+    opts = { type: 'json' } // json by default
     cb = opts
   }
   return this._req('rows', 'POST', data, opts, cb)
