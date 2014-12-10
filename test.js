@@ -43,12 +43,8 @@ test('get row', function (t) {
   })
 })
 
-
-test('post bulk json data', function (t) {
-  var data = [
-    { wee: 'foo'},
-    { beep: 'boop'}
-  ]
+test('post bulk ndjson data', function (t) {
+  var data = "{ \"wee\": \"foo\"}\n{ \"woo\": \"boop\"}"
 
   dat.bulk(data, { type: 'json' }, function (err, res, body) {
     t.ifError(err)
@@ -57,15 +53,12 @@ test('post bulk json data', function (t) {
   })
 })
 
-
 test('post bulk csv data', function (t) {
   var csv = 'wee,woo\n1,a\n2,b\n3,c'
 
-  dat.bulk(csv.toString(), { type: 'csv' }, function (err, res, body) {
+  dat.bulk(csv, { type: 'csv' }, function (err, res, body) {
     t.ifError(err)
-    res.on('end', function () {
-      t.ok(body, 'bulk response')
-      t.end()
-    })
+    t.ok(body, 'bulk response')
+    t.end()
   })
 })

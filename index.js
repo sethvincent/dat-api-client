@@ -88,7 +88,6 @@ DatAPI.prototype._req = function (resource, method, data, opts, cb) {
   if (opts.reverse) query.reverse = opts.reverse
   if (opts.version) query.version = opts.version
   if (opts.style) query.style = opts.style
-  if (opts.data) query.data = opts.data
   if (opts.since) query.since = opts.since
   if (opts.tail) query.tail = opts.tail
   if (opts.live) query.live = opts.live
@@ -108,19 +107,5 @@ DatAPI.prototype._req = function (resource, method, data, opts, cb) {
 
   debug('request', opts)
 
-  var req = request(opts, cb)
-
-  if (opts.type == 'csv' && data) {
-    debug('writing', data)
-    req.write(data)
-    req.on('response', function (resp) {
-      return cb(null, resp, true)
-    })
-    req.on('error', function (err) {
-      return cb(err)
-    })
-    req.end()
-  }
-
-  return req
+  return request(opts, cb)
 }

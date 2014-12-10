@@ -2,3 +2,4 @@
 node_modules
 .dat
 dat.json
+npm-debug.log
