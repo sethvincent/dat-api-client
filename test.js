@@ -17,7 +17,7 @@ test('setup', function (t) {
 
   dat = Dat(dir, opts, datReady)
   
-  function () {
+  function datReady () {
     api = datAPI({
       url: 'http://127.0.0.1:6461',
       user: 'foo',
