@@ -2,7 +2,7 @@ var test = require('tape');
 var DatAPI = require('./')
 
 var dat = DatAPI({
-  url: 'http://127.0.0.1:6461',
+  url: 'http://127.0.0.1:6461/',
   user: 'foo',
   pass: 'bar'
 })

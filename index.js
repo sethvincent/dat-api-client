@@ -92,6 +92,8 @@ DatAPI.prototype._req = function (resource, method, data, opts, cb) {
   if (opts.tail) query.tail = opts.tail
   if (opts.live) query.live = opts.live
 
+  // strip trailing slash
+  if (this.url[this.url.length - 1] === '/') this.url = this.url.slice(0, this.url.length - 1)
   opts.uri = this.url + '/api/' + resource + '?' + qs.stringify(query)
   opts.method = method
   opts.headers = {}
