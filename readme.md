@@ -72,7 +72,7 @@ Get the latest changes from the Dat server.
 
 ### dat.bulk(data, options, callback)
 
-Post ndjson or csv to the dat server. Specify the the type of data (either `'json'` or `'csv'` in the `options` object.
+Post newline-delimited json or csv to the dat server. Specify the the type of data (either `'json'` or `'csv'` in the `options` object.
 
 Example:
 
