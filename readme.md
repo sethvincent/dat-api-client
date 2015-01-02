@@ -42,7 +42,9 @@ dat.info(function (err, res, body) {
 })
 ```
 
-### dat.get(key, options, callback)
+### dat.get([key], options, callback)
+
+If you specify a key, you get a specific row back. Leave the key out and you get multiple rows back that can be filtered using gt/lt/limit properties in the `options` object.
 
 The callback gets `error`, `response`, and `body` arguments.
 
@@ -72,7 +74,7 @@ Get the latest changes from the Dat server.
 
 ### dat.bulk(data, options, callback)
 
-Post newline-delimited json or csv to the dat server. Specify the the type of data (either `'json'` or `'csv'` in the `options` object.
+Post newline-delimited json or csv to the Dat server. Specify the the type of data (either `'json'` or `'csv'` in the `options` object.
 
 Example:
 
