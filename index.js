@@ -16,14 +16,22 @@ DatAPI.prototype.info = function (cb) {
   return this._req('', 'GET', null, {}, cb)
 }
 
-DatAPI.prototype.get = function (key, cb) {
+DatAPI.prototype.get = function (key, opts, cb) {
   if (typeof key === 'function') {
     cb = key
     opts = {}
     return this._req('rows', 'GET', null, opts, cb)
   }
 
-  return this._req('rows/' + key, 'GET', null, opts, cb)
+  if (typeof key === 'object') {
+    cb = opts
+    opts = key
+    return this._req('rows', 'GET', null, opts, cb)
+  }
+
+  if (typeof key === 'string') {
+    return this._req('rows/' + key, 'GET', null, opts, cb)
+  }
 }
 
 DatAPI.prototype.put = function (data, opts, cb) {
