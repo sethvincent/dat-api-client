@@ -42,6 +42,11 @@ DatAPI.prototype.put = function (data, opts, cb) {
   return this._req('rows', 'POST', data, opts, cb)
 }
 
+DatAPI.prototype.delete = function (key, cb) {
+  var uri = 'rows/' + key
+  return this._req(uri, 'DELETE', null, {}, cb)
+}
+
 DatAPI.prototype.getBlob = function (opts, cb) {
   var uri = 'rows/' + opts.key + '/' + opts.filename
   return this._req(uri, 'GET', null, opts, cb)

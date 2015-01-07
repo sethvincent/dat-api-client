@@ -56,14 +56,41 @@ dat.get(key, function (err, res, body) {
 })
 ```
 
-### dat.put(key, options, callback)
+### dat.put(key, data, callback)
+
+Create or update a row.
 
 The callback gets `error`, `response`, and `body` arguments.
+
+Creating a row example:
+
+```
+dat.put({ example: 'some text' }, function (err, res, body) {
+  console.log(body)
+})
+```
+
+Updating a row example:
+
+```
+dat.get(key, function (err, res, row) {
+  
+  // make changes to row object
+  
+  dat.put(row, function (err, res, updatedRow) {
+    console.log(updatedRow)
+  })
+})
+```
+
+### dat.delete(key, callback)
+
+Delete a row.
 
 Example:
 
 ```
-dat.put(key, function (err, res, body) {
+dat.delete(key, function (err, res, body) {
   console.log(body)
 })
 ```

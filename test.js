@@ -38,7 +38,7 @@ test('get api repo info', function (t) {
   })
 })
 
-test('post rows', function (t) {
+test('create a row', function (t) {
   api.put({ wee: 'foo' }, function (err, res, body) {
     t.ifError(err)
     t.ok(body, 'post response body')
@@ -62,6 +62,33 @@ test('get row', function (t) {
       t.ok(row, 'row object exists')
       t.equals(row.wee, 'foo')
       t.end()
+    })
+  })
+})
+
+test('update a row', function (t) {
+  api.put({ update: 'this row' }, function (err, res, body) {
+    api.get(body.key, function (err, res, row) {
+      row.update = 'this is updated'
+      api.put(row, function (err, res, newrow) {
+        t.equal(body.key, newrow.key)
+        t.equal(newrow.update, 'this is updated')
+        t.end()
+      })
+    })
+  })
+})
+
+test('delete row', function (t) {
+  api.put({ destroy: 'this row' }, function (err, res, body) {
+    api.get(body.key, function (err, res, row) {
+      t.ifError(err)
+      t.ok(row)
+      t.equals(row.destroy, 'this row')
+      api.delete(row.key, function (err, res, body) {
+        t.equal(body.deleted, true)
+        t.end()
+      })
     })
   })
 })
